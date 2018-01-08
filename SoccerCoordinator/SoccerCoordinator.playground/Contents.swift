@@ -2,8 +2,7 @@
         by Jernsdorff
 ***********************************/
 
-//Dictionary for each player
-/*
+/*  PLAYER DATA
  Joe Smith    42    YES    Jim and Jan Smith
  Jill Tanner    36    YES    Clara Tanner
  Bill Bon    43    YES    Sara and Jenny Bon
@@ -24,6 +23,7 @@
  Herschel Krustofski    45    YES    Hyman and Rachel Krustofski
 */
 
+//Dictionary for each player
 let joeSmith: [String: Any] = ["name": "Joe Smith", "height": 42, "experienced": true, "guardian names": "Jim and Jan Smith"]
 let jillTanner: [String: Any] = ["name": "Jill Tanner", "height": 36, "experienced": true, "guardian names": "Clara Tanner"]
 let billBon: [String: Any] = ["name": "Bill Bon", "height": 43, "experienced": true, "guardian names": "Sara and Jenny Bon"]
@@ -42,6 +42,13 @@ let arnoldWillis: [String: Any] = ["name": "Arnold Willis", "height": 43, "exper
 let phillipHelm: [String: Any] = ["name": "Phillip Helm", "height": 44, "experienced": true, "guardian names": "Thomas Helm and Eva Jones"]
 let lesClay: [String: Any] = ["name": "Les Clay", "height": 42, "experienced": true, "guardian names": "Wynonna Brown"]
 let herschelKrustofski: [String: Any] = ["name": "Herschel Krustofski", "height": 45, "experienced": true, "guardian names": "Hyman and Rachel Krustofski"]
+
+//Array to hold each player
+let players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeSmith, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski]
+
+//Test to get at data works.  Delete this later.
+//players[1]
+
 
 
 
