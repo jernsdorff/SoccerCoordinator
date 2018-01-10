@@ -49,6 +49,109 @@ let players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, s
 //Test to get at data works.  Delete this later.
 //players[1]
 
+func sortPlayersIntoTeams(player: [String: Any]) -> String{
+    return "placeholder replace me"
+}
+
+func sortPlayersByHeight(player: [String: Any]) -> (String, String){
+
+    let playerName = player["name"] as! String
+    let height = player["height"] as! Int
+    
+    if height >= 46{
+        return (playerName, "tallest")
+    }
+    else if height >= 44 && height <= 45{
+        return (playerName, "tall")
+    }
+    else if height >= 41 && height <= 43{
+        return (playerName, "medium")
+    }
+    else if height >= 38 && height <= 40{
+        return (playerName, "short")
+    }
+    else if height <= 37{
+        return (playerName, "shortest")
+    }
+    return ("Error Name", "Error Height")
+
+}
+
+func sortPlayersByExperience(player: [String: Any]) -> (String,Bool){
+    
+    let playerName = player["name"] as! String
+    let isExperienced = player["experienced"] as! Bool
+    
+    if isExperienced == true{
+        return (playerName, true)
+    }
+    else{
+        return (playerName, false)
+    }
+}
+
+
+var tier1Count = 0
+var tier2Count = 0
+var tier3Count = 0
+var tier4Count = 0
+var tier5Count = 0
+var tier6Count = 0
+
+func assignPlayerRanking(player: [String: Any], height: String, experience: Bool) -> String{
+    
+    var playerRanking: String = "Not Assigned"
+    
+    if height == "tallest" && experience == true{
+        playerRanking = "tier 1"
+        tier1Count += 1
+        return playerRanking
+    } else if (height == "tall" && experience == true) || (height == "tallest" && experience == false){
+        playerRanking = "tier 2"
+        tier2Count += 1
+        return playerRanking
+    } else if (height == "medium" && experience == true) || (height == "tall" && experience == false){
+        playerRanking = "tier 3"
+        tier3Count += 1
+        return playerRanking
+    } else if (height == "short" && experience == true) || (height == "medium" && experience == false){
+        playerRanking = "tier 4"
+        tier4Count += 1
+        return playerRanking
+    } else if (height == "shortest" && experience == true) || (height == "short" && experience == false){
+        playerRanking = "tier 5"
+        tier5Count += 1
+        return playerRanking
+    } else if height == "shortest" && experience == false{
+        playerRanking = "tier 6"
+        tier6Count += 1
+        return playerRanking
+    } else {
+        return playerRanking
+    }
+}
+
+let count = players.count - 1
+
+for playerNumber in 0...count{
+    let playerHeight = sortPlayersByHeight(player: players[playerNumber])
+    print("height: \(playerHeight)")
+    
+    let playerExperience = sortPlayersByExperience(player: players[playerNumber])
+    print("experience: \(playerExperience)")
+    
+    let playerRanking = assignPlayerRanking(player: players[playerNumber], height: playerHeight.1, experience: playerExperience.1)
+    print("ranking: \(playerRanking)")
+ }
+
+tier1Count
+tier2Count
+tier3Count
+tier4Count
+tier5Count
+tier6Count
+
+
 
 
 
