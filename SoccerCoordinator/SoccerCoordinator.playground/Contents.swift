@@ -23,6 +23,19 @@
  Herschel Krustofski    45    YES    Hyman and Rachel Krustofski
 */
 
+//Global Variables for Each Ranking Tier
+var tier1: [String] = []
+var tier2: [String] = []
+var tier3: [String] = []
+var tier4: [String] = []
+var tier5: [String] = []
+var tier6: [String] = []
+
+//Global Variable for Each Team
+var teamSharks: [String] = []
+var teamDragons: [String] = []
+var teamRaptors: [String] = []
+
 //Dictionary for each player
 let joeSmith: [String: Any] = ["name": "Joe Smith", "height": 42, "experienced": true, "guardian names": "Jim and Jan Smith"]
 let jillTanner: [String: Any] = ["name": "Jill Tanner", "height": 36, "experienced": true, "guardian names": "Clara Tanner"]
@@ -45,13 +58,6 @@ let herschelKrustofski: [String: Any] = ["name": "Herschel Krustofski", "height"
 
 //Array to hold each player
 let players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeSmith, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski]
-
-//Test to get at data works.  Delete this later.
-//players[1]
-
-func sortPlayersIntoTeams(player: [String: Any]) -> String{
-    return "placeholder replace me"
-}
 
 func sortPlayersByHeight(player: [String: Any]) -> (String, String){
 
@@ -90,41 +96,33 @@ func sortPlayersByExperience(player: [String: Any]) -> (String,Bool){
     }
 }
 
-
-var tier1Count = 0
-var tier2Count = 0
-var tier3Count = 0
-var tier4Count = 0
-var tier5Count = 0
-var tier6Count = 0
-
 func assignPlayerRanking(player: [String: Any], height: String, experience: Bool) -> String{
     
     var playerRanking: String = "Not Assigned"
     
     if height == "tallest" && experience == true{
         playerRanking = "tier 1"
-        tier1Count += 1
+        tier1.append(player["name"] as! String)
         return playerRanking
     } else if (height == "tall" && experience == true) || (height == "tallest" && experience == false){
         playerRanking = "tier 2"
-        tier2Count += 1
+        tier2.append(player["name"] as! String)
         return playerRanking
     } else if (height == "medium" && experience == true) || (height == "tall" && experience == false){
         playerRanking = "tier 3"
-        tier3Count += 1
+        tier3.append(player["name"] as! String)
         return playerRanking
     } else if (height == "short" && experience == true) || (height == "medium" && experience == false){
         playerRanking = "tier 4"
-        tier4Count += 1
+        tier4.append(player["name"] as! String)
         return playerRanking
     } else if (height == "shortest" && experience == true) || (height == "short" && experience == false){
         playerRanking = "tier 5"
-        tier5Count += 1
+        tier5.append(player["name"] as! String)
         return playerRanking
     } else if height == "shortest" && experience == false{
         playerRanking = "tier 6"
-        tier6Count += 1
+        tier6.append(player["name"] as! String)
         return playerRanking
     } else {
         return playerRanking
@@ -144,17 +142,84 @@ for playerNumber in 0...count{
     print("ranking: \(playerRanking)")
  }
 
-tier1Count
-tier2Count
-tier3Count
-tier4Count
-tier5Count
-tier6Count
+tier1
+tier2
+tier3
+tier4
+tier5
+tier6
+
+func assignPlayersToTeams(tier: [String]){
+    
+    var teamPosition = 1
+    
+    if tier.count > 0{
+        let count = tier.count - 1
+        
+        for number in 0...count{
+            print(tier[number])
+            
+            let name = tier[number]
+            
+            if teamPosition == 1 && ((teamSharks.count - 1) <= 4)
+            {
+                print("Name: \(tier[number]), Team: Team Sharks")
+                teamSharks.append(name)
+                teamPosition = 2
+            }
+            else if teamPosition == 2 && ((teamDragons.count - 1) <= 4)
+            {
+                print("Name: \(tier[number]), Team: Team Dragons")
+                teamDragons.append(name)
+                teamPosition = 3
+            }
+            else if teamPosition == 3 && ((teamRaptors.count - 1) <= 4)
+            {
+                print("Name: \(tier[number]), Team: Team Raptors")
+                teamRaptors.append(name)
+                teamPosition = 1
+            }
+            else
+            {
+                print("*********************")
+                print("You Shouldn't Be Here - FIX THIS TOMORROW")
+                print("*********************")
+            }
+        }
+    } else {
+        print("Empty Tier")
+    }
+}
 
 
+print("**************")
+print("Tier 1 Players")
+print("**************")
+assignPlayersToTeams(tier: tier1)
+print("**************")
+print("Tier 2 Players")
+print("**************")
+assignPlayersToTeams(tier: tier2)
+print("**************")
+print("Tier 3 Players")
+print("**************")
+assignPlayersToTeams(tier: tier3)
+print("**************")
+print("Tier 4 Players")
+print("**************")
+assignPlayersToTeams(tier: tier4)
+print("**************")
+print("Tier 5 Players")
+print("**************")
+assignPlayersToTeams(tier: tier5)
+print("**************")
+print("Tier 6 Players")
+print("**************")
+assignPlayersToTeams(tier: tier6)
 
-
-
+teamSharks
+teamDragons
+teamRaptors
 
 
 
