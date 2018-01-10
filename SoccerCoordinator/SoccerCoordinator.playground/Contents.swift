@@ -2,7 +2,7 @@
         by Jernsdorff
 ***********************************/
 
-/*  PLAYER DATA
+/*  PLAYER DATA - AS GIVEN BY TEAMTREEHOUSE
  Joe Smith    42    YES    Jim and Jan Smith
  Jill Tanner    36    YES    Clara Tanner
  Bill Bon    43    YES    Sara and Jenny Bon
@@ -23,7 +23,7 @@
  Herschel Krustofski    45    YES    Hyman and Rachel Krustofski
 */
 
-//Global Variables for Each Ranking Tier
+//Global Variables for Each Rank
 var tier1: [String] = []
 var tier2: [String] = []
 var tier3: [String] = []
@@ -37,6 +37,8 @@ var teamDragons: [String] = []
 var teamRaptors: [String] = []
 
 //Dictionary for each player
+//** REVIEWERS: String: Any was what was suggested by Xcode for assigning multiple value types in a dictionary.
+//If there is something better to use let me know.
 let joeSmith: [String: Any] = ["name": "Joe Smith", "height": 42, "experienced": true, "guardian names": "Jim and Jan Smith"]
 let jillTanner: [String: Any] = ["name": "Jill Tanner", "height": 36, "experienced": true, "guardian names": "Clara Tanner"]
 let billBon: [String: Any] = ["name": "Bill Bon", "height": 43, "experienced": true, "guardian names": "Sara and Jenny Bon"]
@@ -59,11 +61,16 @@ let herschelKrustofski: [String: Any] = ["name": "Herschel Krustofski", "height"
 //Array to hold each player
 let players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeSmith, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski]
 
+//Function to sort players by height.  Passing in the player from players. Returning playerName and height ranking.
 func sortPlayersByHeight(player: [String: Any]) -> (String, String){
 
+    //assigning player name as string to a constant.  Have to convert otherwise it gives a type mismatch.
     let playerName = player["name"] as! String
+    
+    //assigning player height to constant as Int.  Have to convert otherwise it gives a type mismatch.
     let height = player["height"] as! Int
     
+    //sort players into rankings by height
     if height >= 46{
         return (playerName, "tallest")
     }
@@ -83,11 +90,16 @@ func sortPlayersByHeight(player: [String: Any]) -> (String, String){
 
 }
 
+//Function to sort players by whether they are experienced or not.  Pass in player.  Return playerName and bool for whether they are experienced.
 func sortPlayersByExperience(player: [String: Any]) -> (String,Bool){
     
+    //Store player name as String in constant.
     let playerName = player["name"] as! String
+    
+    //Store whether the player is experienced as a bool.
     let isExperienced = player["experienced"] as! Bool
     
+    //If experienced return true else false.
     if isExperienced == true{
         return (playerName, true)
     }
@@ -96,52 +108,170 @@ func sortPlayersByExperience(player: [String: Any]) -> (String,Bool){
     }
 }
 
+//Function to assign player an overall ranking based upon their hight and experience.
 func assignPlayerRanking(player: [String: Any], height: String, experience: Bool) -> String{
     
+    //Intialize a variable to override with each tier name as a String.
     var playerRanking: String = "Not Assigned"
     
+    //Sort players into rankings based upon their height and experience.
+    //The taller the player and the more experienced the higher they rank.
     if height == "tallest" && experience == true{
+        //set current tier
         playerRanking = "tier 1"
+        
+        //append player name as a string to global tier variable
         tier1.append(player["name"] as! String)
+        
+        //return tier
         return playerRanking
     } else if (height == "tall" && experience == true) || (height == "tallest" && experience == false){
+        //set current tier
         playerRanking = "tier 2"
+
+        //append player name as a string to global tier variable
         tier2.append(player["name"] as! String)
+
+        //return tier
         return playerRanking
     } else if (height == "medium" && experience == true) || (height == "tall" && experience == false){
+        //set current tier
         playerRanking = "tier 3"
+        
+        //append player name as a string to global tier variable
         tier3.append(player["name"] as! String)
+        
+        //return tier
         return playerRanking
     } else if (height == "short" && experience == true) || (height == "medium" && experience == false){
+        //set current tier
         playerRanking = "tier 4"
+        
+        //append player name as a string to global tier variable
         tier4.append(player["name"] as! String)
+        
+        //return tier
         return playerRanking
     } else if (height == "shortest" && experience == true) || (height == "short" && experience == false){
+        //set current tier
         playerRanking = "tier 5"
+        
+        //append player name as a string to global tier variable
         tier5.append(player["name"] as! String)
+        
+        //return tier
         return playerRanking
     } else if height == "shortest" && experience == false{
+        //set current tier
         playerRanking = "tier 6"
+        
+        //append player name as a string to global tier variable
         tier6.append(player["name"] as! String)
+        
+        //return tier
         return playerRanking
     } else {
+        //If none of the statements match then return default statement.
         return playerRanking
     }
 }
 
+//Function to assign players to teams passing in each tier as a string
+func assignPlayersToTeams(tier: [String]){
+    
+    //variable to iterate over for each team.  Once someone is assigned
+    //to one team it moves the next team.  Once it gets to last team
+    //it starts over with the first team.
+    var teamPosition = 1
+    
+    //if the tier is not empty
+    if tier.count > 0{
+        
+        //assign tier count to constant
+        let count = tier.count - 1
+        
+        //for loop to iterate through each member of a tier
+        for number in 0...count{
+            
+            //Print player from this tier to Console
+            print(tier[number])
+            
+            //Assign name to constant
+            let name = tier[number]
+            
+            //Check to see what team we are currently assigning players to and make sure each team count is <=4
+            //Note I think this is a magic number.  Will have to fix team sizes to be variable.
+            //***** FIX THIS *******
+            if teamPosition == 1 && ((teamSharks.count - 1) <= 4)
+            {
+                //print name and team for each player
+                print("Name: \(tier[number]), Team: Team Sharks")
+                
+                //Append each name to the team's global array
+                teamSharks.append(name)
+                
+                //set team position to next team
+                teamPosition = 2
+            }
+            else if teamPosition == 2 && ((teamDragons.count - 1) <= 4)
+            {
+                //print name and team for each player
+                print("Name: \(tier[number]), Team: Team Dragons")
+                
+                //Append each name to the team's global array
+                teamDragons.append(name)
+
+                //set team position to next team
+                teamPosition = 3
+            }
+            else if teamPosition == 3 && ((teamRaptors.count - 1) <= 4)
+            {
+                //print name and team for each player
+                print("Name: \(tier[number]), Team: Team Raptors")
+
+                //Append each name to the team's global array
+                teamRaptors.append(name)
+                
+                //set team position back to first team
+                teamPosition = 1
+            }
+            else
+            {
+                //It should never get here but if it does you know something is wrong.
+                //This means players exist that aren't getting assigned.
+                print("*********************")
+                print("You Shouldn't Be Here - FIX THIS TOMORROW")
+                print("*********************")
+            }
+        }
+    } else {
+        //If you get here it just means that there are no players in this Tier.  In this example both Tier 1 and 6 are empty.
+        print("--Empty Tier--")
+    }
+}
+
+//*** BASE LOGIC ***
+
+//Get count of the number of players in players array -1.
 let count = players.count - 1
 
+//Iterate over the players array
 for playerNumber in 0...count{
+    
+    //Rank players by height
     let playerHeight = sortPlayersByHeight(player: players[playerNumber])
     print("height: \(playerHeight)")
     
+    //Rank players by experience
     let playerExperience = sortPlayersByExperience(player: players[playerNumber])
     print("experience: \(playerExperience)")
     
+    //Rank players by height and experience
     let playerRanking = assignPlayerRanking(player: players[playerNumber], height: playerHeight.1, experience: playerExperience.1)
     print("ranking: \(playerRanking)")
- }
+}
 
+//Just calling each tier to view in playground to the right. -->
 tier1
 tier2
 tier3
@@ -149,49 +279,7 @@ tier4
 tier5
 tier6
 
-func assignPlayersToTeams(tier: [String]){
-    
-    var teamPosition = 1
-    
-    if tier.count > 0{
-        let count = tier.count - 1
-        
-        for number in 0...count{
-            print(tier[number])
-            
-            let name = tier[number]
-            
-            if teamPosition == 1 && ((teamSharks.count - 1) <= 4)
-            {
-                print("Name: \(tier[number]), Team: Team Sharks")
-                teamSharks.append(name)
-                teamPosition = 2
-            }
-            else if teamPosition == 2 && ((teamDragons.count - 1) <= 4)
-            {
-                print("Name: \(tier[number]), Team: Team Dragons")
-                teamDragons.append(name)
-                teamPosition = 3
-            }
-            else if teamPosition == 3 && ((teamRaptors.count - 1) <= 4)
-            {
-                print("Name: \(tier[number]), Team: Team Raptors")
-                teamRaptors.append(name)
-                teamPosition = 1
-            }
-            else
-            {
-                print("*********************")
-                print("You Shouldn't Be Here - FIX THIS TOMORROW")
-                print("*********************")
-            }
-        }
-    } else {
-        print("Empty Tier")
-    }
-}
-
-
+//Assign Players to Teams for Each Tier Based on Ranking
 print("**************")
 print("Tier 1 Players")
 print("**************")
@@ -217,6 +305,7 @@ print("Tier 6 Players")
 print("**************")
 assignPlayersToTeams(tier: tier6)
 
+//Calling each team to be viewed in the playground to the right.  -->
 teamSharks
 teamDragons
 teamRaptors
