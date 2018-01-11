@@ -44,59 +44,70 @@ var teamRaptors: [String] = []
 //Dictionary for each player
 //** REVIEWERS: String: Any was what was suggested by Xcode for assigning multiple value types in a dictionary.
 //If there is something better to use let me know.
-let joeSmith: [String: Any] = ["name": "Joe Smith", "height": 42, "experienced": true, "guardian names": "Jim and Jan Smith"]
-let jillTanner: [String: Any] = ["name": "Jill Tanner", "height": 36, "experienced": true, "guardian names": "Clara Tanner"]
-let billBon: [String: Any] = ["name": "Bill Bon", "height": 43, "experienced": true, "guardian names": "Sara and Jenny Bon"]
-let evaGordon: [String: Any] = ["name": "Eva Gordon", "height": 45, "experienced": false, "guardian names": "Wendy and Mike Gordon"]
-let mattGill: [String: Any] = ["name": "Matt Gill", "height": 40, "experienced": false, "guardian names": "Charles and Sylvia Gill"]
-let kimmyStein: [String: Any] = ["name": "Kimmy Stein", "height": 41, "experienced": false, "guardian names": "Bill and Hillary Stein"]
-let sammyAdams: [String: Any] = ["name": "Sammy Adams", "height": 45, "experienced": false, "guardian names": "Jeff Adams"]
-let karlSaygan: [String: Any] = ["name": "Karl Saygan", "height": 42, "experienced": true, "guardian names": "Heather Bledsoe"]
-let suzaneGreenberg: [String: Any] = ["name": "Suzan Greenberg", "height": 44, "experienced": true, "guardian names": "Henrietta Dumas"]
-let salDali: [String: Any] = ["name": "Sal Dali", "height": 41, "experienced": false, "guardian names": "Gala Dali"]
-let joeKavalier: [String: Any] = ["name": "Joe Kavalier", "height": 39, "experienced": false, "guardian names": "Sam and Elaine Kavalier"]
-let benFinkelstein: [String: Any] = ["name": "Ben Finkelstein", "height": 44, "experienced": false, "guardian names": "Aaron and Jill Finkelstein"]
-let diegoSoto: [String: Any] = ["name": "Diego Soto", "height": 41, "experienced": true, "guardian names": "Robin and Sarika Soto"]
-let chloeAlaska: [String: Any] = ["name": "Choloe Alaska", "height": 47, "experienced": false, "guardian names": "David and Jamie Alaska"]
-let arnoldWillis: [String: Any] = ["name": "Arnold Willis", "height": 43, "experienced": false, "guardian names": "Claire Willis"]
-let phillipHelm: [String: Any] = ["name": "Phillip Helm", "height": 44, "experienced": true, "guardian names": "Thomas Helm and Eva Jones"]
-let lesClay: [String: Any] = ["name": "Les Clay", "height": 42, "experienced": true, "guardian names": "Wynonna Brown"]
-let herschelKrustofski: [String: Any] = ["name": "Herschel Krustofski", "height": 45, "experienced": true, "guardian names": "Hyman and Rachel Krustofski"]
+var joeSmith: [String: Any] = ["name": "Joe Smith", "height": 42, "experienced": true, "guardian names": "Jim and Jan Smith"]
+var jillTanner: [String: Any] = ["name": "Jill Tanner", "height": 36, "experienced": true, "guardian names": "Clara Tanner"]
+var billBon: [String: Any] = ["name": "Bill Bon", "height": 43, "experienced": true, "guardian names": "Sara and Jenny Bon"]
+var evaGordon: [String: Any] = ["name": "Eva Gordon", "height": 45, "experienced": false, "guardian names": "Wendy and Mike Gordon"]
+var mattGill: [String: Any] = ["name": "Matt Gill", "height": 40, "experienced": false, "guardian names": "Charles and Sylvia Gill"]
+var kimmyStein: [String: Any] = ["name": "Kimmy Stein", "height": 41, "experienced": false, "guardian names": "Bill and Hillary Stein"]
+var sammyAdams: [String: Any] = ["name": "Sammy Adams", "height": 45, "experienced": false, "guardian names": "Jeff Adams"]
+var karlSaygan: [String: Any] = ["name": "Karl Saygan", "height": 42, "experienced": true, "guardian names": "Heather Bledsoe"]
+var suzaneGreenberg: [String: Any] = ["name": "Suzan Greenberg", "height": 44, "experienced": true, "guardian names": "Henrietta Dumas"]
+var salDali: [String: Any] = ["name": "Sal Dali", "height": 41, "experienced": false, "guardian names": "Gala Dali"]
+var joeKavalier: [String: Any] = ["name": "Joe Kavalier", "height": 39, "experienced": false, "guardian names": "Sam and Elaine Kavalier"]
+var benFinkelstein: [String: Any] = ["name": "Ben Finkelstein", "height": 44, "experienced": false, "guardian names": "Aaron and Jill Finkelstein"]
+var diegoSoto: [String: Any] = ["name": "Diego Soto", "height": 41, "experienced": true, "guardian names": "Robin and Sarika Soto"]
+var chloeAlaska: [String: Any] = ["name": "Choloe Alaska", "height": 47, "experienced": false, "guardian names": "David and Jamie Alaska"]
+var arnoldWillis: [String: Any] = ["name": "Arnold Willis", "height": 43, "experienced": false, "guardian names": "Claire Willis"]
+var phillipHelm: [String: Any] = ["name": "Phillip Helm", "height": 44, "experienced": true, "guardian names": "Thomas Helm and Eva Jones"]
+var lesClay: [String: Any] = ["name": "Les Clay", "height": 42, "experienced": true, "guardian names": "Wynonna Brown"]
+var herschelKrustofski: [String: Any] = ["name": "Herschel Krustofski", "height": 45, "experienced": true, "guardian names": "Hyman and Rachel Krustofski"]
 
 //Added a couple other players to show that my code is expandable
-let bobNewhart: [String: Any] = ["name": "Bob Newhart", "height": 35, "experienced": false, "guardian names": "John and Nancy Newhart"]
-let joanNewhart: [String: Any] = ["name": "Joan Nehart", "height": 48, "experienced": true, "guardian names": "John and Nancy Newhart"]
+var bobNewhart: [String: Any] = ["name": "Bob Newhart", "height": 35, "experienced": false, "guardian names": "John and Nancy Newhart"]
+var joanNewhart: [String: Any] = ["name": "Joan Nehart", "height": 48, "experienced": true, "guardian names": "John and Nancy Newhart"]
 
 
 //Array to hold each player
-let players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeSmith, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski, bobNewhart, joanNewhart]
+var players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeSmith, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski, bobNewhart, joanNewhart]
 
 //Function to sort players by height.  Passing in the player from players. Returning playerName and height ranking.
-func sortPlayersByHeight(player: [String: Any]) -> (String, String){
-
-    //assigning player name as string to a constant.  Have to convert otherwise it gives a type mismatch.
-    let playerName = player["name"] as! String
+func sortPlayersByHeight(player: [String: Any]) -> (String){
+    
+    print("sortPlayersByHeight - Player: \(player)")
     
     //assigning player height to constant as Int.  Have to convert otherwise it gives a type mismatch.
     let height = player["height"] as! Int
     
+    var player1 = player
+    
     //sort players into rankings by height
     if height >= 46{
-        return (playerName, "tallest")
+        let heightBracket = "tallest"
+        player1["heightBracket"] = heightBracket
+        return (heightBracket)
     }
     else if height >= 44 && height <= 45{
-        return (playerName, "tall")
+        let heightBracket = "tall"
+        player1["heightBracket"] = heightBracket
+        return (heightBracket)
     }
     else if height >= 41 && height <= 43{
-        return (playerName, "medium")
+        let heightBracket = "medium"
+        player1["heightBracket"] = heightBracket
+        return (heightBracket)
     }
     else if height >= 38 && height <= 40{
-        return (playerName, "short")
+        let heightBracket = "short"
+        player1["heightBracket"] = heightBracket
+        return (heightBracket)
     }
     else if height <= 37{
-        return (playerName, "shortest")
+        let heightBracket = "shortest"
+        player1["heightBracket"] = heightBracket
+        return (heightBracket)
     }
-    return ("Error Name", "Error Height")
+    return ("Error Height")
 
 }
 
@@ -130,17 +141,11 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
         //set current tier
         playerRanking = "tier 1"
         
-        //append player name as a string to global tier variable
-        tier1.append(player["name"] as! String)
-        
         //return tier
         return playerRanking
     } else if (height == "tall" && experience == true) || (height == "tallest" && experience == false){
         //set current tier
         playerRanking = "tier 2"
-
-        //append player name as a string to global tier variable
-        tier2.append(player["name"] as! String)
 
         //return tier
         return playerRanking
@@ -148,17 +153,11 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
         //set current tier
         playerRanking = "tier 3"
         
-        //append player name as a string to global tier variable
-        tier3.append(player["name"] as! String)
-        
         //return tier
         return playerRanking
     } else if (height == "short" && experience == true) || (height == "medium" && experience == false){
         //set current tier
         playerRanking = "tier 4"
-        
-        //append player name as a string to global tier variable
-        tier4.append(player["name"] as! String)
         
         //return tier
         return playerRanking
@@ -166,17 +165,11 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
         //set current tier
         playerRanking = "tier 5"
         
-        //append player name as a string to global tier variable
-        tier5.append(player["name"] as! String)
-        
         //return tier
         return playerRanking
     } else if height == "shortest" && experience == false{
         //set current tier
         playerRanking = "tier 6"
-        
-        //append player name as a string to global tier variable
-        tier6.append(player["name"] as! String)
         
         //return tier
         return playerRanking
@@ -265,6 +258,10 @@ func assignPlayersToTeams(tier: [String]){
     }
 }
 
+func createLetterForPlayer(){
+    
+}
+
 //*** BASE LOGIC ***
 
 //Get count of the number of players in players array -1.
@@ -275,15 +272,31 @@ for playerNumber in 0...count{
     
     //Rank players by height
     let playerHeight = sortPlayersByHeight(player: players[playerNumber])
-    print("height: \(playerHeight)")
+    players[playerNumber].updateValue(playerHeight, forKey: "heightBracket")
+    print("Player Info: \(players[playerNumber])")
+    
+    
+    //print("height: \(players["heightBracket"])")
     
     //Rank players by experience
     let playerExperience = sortPlayersByExperience(player: players[playerNumber])
     print("experience: \(playerExperience)")
     
     //Rank players by height and experience
-    let playerRanking = assignPlayerRanking(player: players[playerNumber], height: playerHeight.1, experience: playerExperience.1)
-    print("ranking: \(playerRanking)")
+    
+    print("********* FIX ME TOMORROW - IN BASE LOGIC ***********")
+    print("This is how you reference the code for the invitations.")
+    
+    for (key,value) in players[playerNumber]{
+        
+        if key == "heightBracket"{
+            print("--------------->>>>>>>>>player height bracket: \(value)")
+        }
+    }
+    print(players[playerNumber])
+    
+    //let playerRanking = assignPlayerRanking(player: players[playerNumber], height: playerHeight.1, experience: playerExperience.1)
+    //print("ranking: \(playerRanking)")
 }
 
 //Just calling each tier to view in playground to the right. -->
