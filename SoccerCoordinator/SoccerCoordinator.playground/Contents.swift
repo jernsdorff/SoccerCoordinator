@@ -65,7 +65,7 @@ var herschelKrustofski: [String: Any] = ["name": "Herschel Krustofski", "height"
 
 //Added a couple other players to show that my code is expandable
 var bobNewhart: [String: Any] = ["name": "Bob Newhart", "height": 35, "experienced": false, "guardian names": "John and Nancy Newhart"]
-var joanNewhart: [String: Any] = ["name": "Joan Nehart", "height": 48, "experienced": true, "guardian names": "John and Nancy Newhart"]
+var joanNewhart: [String: Any] = ["name": "Joan Newhart", "height": 48, "experienced": true, "guardian names": "John and Nancy Newhart"]
 
 
 //Array to hold each player
@@ -135,29 +135,49 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
     //Intialize a variable to override with each tier name as a String.
     var playerRanking: String = "Not Assigned"
     
+    print("ASSIGN PLAYER RANKING - HEIGHT: \(height) EXPERIENCE: \(experience)")
+
+    let playerName = player["name"]
+    
     //Sort players into rankings based upon their height and experience.
     //The taller the player and the more experienced the higher they rank.
     if height == "tallest" && experience == true{
         //set current tier
         playerRanking = "tier 1"
+       
+        print("IN assignPlayerRanking - Tier1 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
+        
+        tier1.append(playerName as! String)
         
         //return tier
         return playerRanking
     } else if (height == "tall" && experience == true) || (height == "tallest" && experience == false){
         //set current tier
         playerRanking = "tier 2"
-
+        
+        print("IN assignPlayerRanking - Tier2 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
+        
+        tier2.append(playerName as! String)
+        
         //return tier
         return playerRanking
     } else if (height == "medium" && experience == true) || (height == "tall" && experience == false){
         //set current tier
         playerRanking = "tier 3"
+   
+        print("IN assignPlayerRanking - Tier3 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
+        
+        tier3.append(playerName as! String)
         
         //return tier
         return playerRanking
     } else if (height == "short" && experience == true) || (height == "medium" && experience == false){
         //set current tier
         playerRanking = "tier 4"
+
+        print("IN assignPlayerRanking - Tier4 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
+        
+        tier4.append(playerName as! String)
         
         //return tier
         return playerRanking
@@ -165,11 +185,19 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
         //set current tier
         playerRanking = "tier 5"
         
+        print("IN assignPlayerRanking - Tier5 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
+        
+        tier5.append(playerName as! String)
+        
         //return tier
         return playerRanking
     } else if height == "shortest" && experience == false{
         //set current tier
         playerRanking = "tier 6"
+        
+        print("IN assignPlayerRanking - Tier6 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
+        
+        tier6.append(playerName as! String)
         
         //return tier
         return playerRanking
@@ -284,10 +312,9 @@ for playerNumber in 0...count{
     
     //Rank players by height and experience
     
-    print("********* FIX ME TOMORROW - IN BASE LOGIC ***********")
-    print("This is how you reference the code for the invitations.")
+    //****This is how you reference the code for the invitations****
     
-    var heightBracket = "Default - YOU SHOULD NEVER READ THIS"
+    var heightBracket = "Default"
     
     for (key,value) in players[playerNumber]{
         
@@ -298,8 +325,10 @@ for playerNumber in 0...count{
     }
     print(players[playerNumber])
     
+    //REMEMBER TO UPDATE THE VALUES PASSED IN HERE TOO
     let playerRanking = assignPlayerRanking(player: players[playerNumber], height: heightBracket, experience: playerExperience.1)
-    print("ranking: \(playerRanking)")
+    print("BASE LOGIC - Ranking: \(playerRanking)")
+    
 }
 
 //Just calling each tier to view in playground to the right. -->
