@@ -287,16 +287,19 @@ for playerNumber in 0...count{
     print("********* FIX ME TOMORROW - IN BASE LOGIC ***********")
     print("This is how you reference the code for the invitations.")
     
+    var heightBracket = "Default - YOU SHOULD NEVER READ THIS"
+    
     for (key,value) in players[playerNumber]{
         
         if key == "heightBracket"{
-            print("--------------->>>>>>>>>player height bracket: \(value)")
+            heightBracket = value as! String
+            print("Player Height Bracket: \(heightBracket)")
         }
     }
     print(players[playerNumber])
     
-    //let playerRanking = assignPlayerRanking(player: players[playerNumber], height: playerHeight.1, experience: playerExperience.1)
-    //print("ranking: \(playerRanking)")
+    let playerRanking = assignPlayerRanking(player: players[playerNumber], height: heightBracket, experience: playerExperience.1)
+    print("ranking: \(playerRanking)")
 }
 
 //Just calling each tier to view in playground to the right. -->
