@@ -31,6 +31,11 @@ var tier4: [String] = []
 var tier5: [String] = []
 var tier6: [String] = []
 
+//variable iterate over for each team in the assignPlayersToTeams function.
+//Once someone is assigned to one team it moves the next team.  Once it gets
+//to last team it starts over with the first team.
+var teamPosition = 1
+
 //Global Variable for Each Team
 var teamSharks: [String] = []
 var teamDragons: [String] = []
@@ -179,11 +184,6 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
 //Function to assign players to teams passing in each tier as a string
 func assignPlayersToTeams(tier: [String]){
     
-    //variable to iterate over for each team.  Once someone is assigned
-    //to one team it moves the next team.  Once it gets to last team
-    //it starts over with the first team.
-    var teamPosition = 1
-    
     //if the tier is not empty
     if tier.count > 0{
         
@@ -194,7 +194,7 @@ func assignPlayersToTeams(tier: [String]){
         for number in 0...count{
             
             //Print player from this tier to Console
-            print(tier[number])
+            print("ASSIGNING PLAYER: \(tier[number])")
             
             //Assign name to constant
             let name = tier[number]
@@ -202,7 +202,7 @@ func assignPlayersToTeams(tier: [String]){
             //Check to see what team we are currently assigning players to and make sure each team count is <=4
             //Note I think this is a magic number.  Will have to fix team sizes to be variable.
             //***** FIX THIS *******
-            if teamPosition == 1 && ((teamSharks.count - 1) <= 4)
+            if teamPosition == 1 && ((teamSharks.count - 1) <= 5)
             {
                 //print name and team for each player
                 print("Name: \(tier[number]), Team: Team Sharks")
@@ -213,7 +213,7 @@ func assignPlayersToTeams(tier: [String]){
                 //set team position to next team
                 teamPosition = 2
             }
-            else if teamPosition == 2 && ((teamDragons.count - 1) <= 4)
+            else if teamPosition == 2 && ((teamDragons.count - 1) <= 5)
             {
                 //print name and team for each player
                 print("Name: \(tier[number]), Team: Team Dragons")
@@ -224,7 +224,7 @@ func assignPlayersToTeams(tier: [String]){
                 //set team position to next team
                 teamPosition = 3
             }
-            else if teamPosition == 3 && ((teamRaptors.count - 1) <= 4)
+            else if teamPosition == 3 && ((teamRaptors.count - 1) <= 5)
             {
                 //print name and team for each player
                 print("Name: \(tier[number]), Team: Team Raptors")
@@ -242,6 +242,12 @@ func assignPlayersToTeams(tier: [String]){
                 print("*********************")
                 print("You Shouldn't Be Here - FIX THIS TOMORROW")
                 print("*********************")
+                
+                print("teamPosition: \(teamPosition)")
+                print("SHARKS COUNT: \(teamSharks.count)")
+                print("DRAGONS COUNT: \(teamDragons.count)")
+                print("RAPTORS COUNT: \(teamRaptors.count)")
+            
             }
         }
     } else {
