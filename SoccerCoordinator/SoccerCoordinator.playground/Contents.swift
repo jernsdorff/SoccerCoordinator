@@ -63,8 +63,13 @@ let phillipHelm: [String: Any] = ["name": "Phillip Helm", "height": 44, "experie
 let lesClay: [String: Any] = ["name": "Les Clay", "height": 42, "experienced": true, "guardian names": "Wynonna Brown"]
 let herschelKrustofski: [String: Any] = ["name": "Herschel Krustofski", "height": 45, "experienced": true, "guardian names": "Hyman and Rachel Krustofski"]
 
+//Added a couple other players to show that my code is expandable
+let bobNewhart: [String: Any] = ["name": "Bob Newhart", "height": 35, "experienced": false, "guardian names": "John and Nancy Newhart"]
+let joanNewhart: [String: Any] = ["name": "Joan Nehart", "height": 48, "experienced": true, "guardian names": "John and Nancy Newhart"]
+
+
 //Array to hold each player
-let players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeSmith, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski]
+let players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeSmith, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski, bobNewhart, joanNewhart]
 
 //Function to sort players by height.  Passing in the player from players. Returning playerName and height ranking.
 func sortPlayersByHeight(player: [String: Any]) -> (String, String){
@@ -199,10 +204,8 @@ func assignPlayersToTeams(tier: [String]){
             //Assign name to constant
             let name = tier[number]
             
-            //Check to see what team we are currently assigning players to and make sure each team count is <=4
-            //Note I think this is a magic number.  Will have to fix team sizes to be variable.
-            //***** FIX THIS *******
-            if teamPosition == 1 && ((teamSharks.count - 1) <= 5)
+            //Check to see what team we are currently assigning players to.
+            if teamPosition == 1
             {
                 //print name and team for each player
                 print("Name: \(tier[number]), Team: Team Sharks")
@@ -210,10 +213,12 @@ func assignPlayersToTeams(tier: [String]){
                 //Append each name to the team's global array
                 teamSharks.append(name)
                 
+                print("Team Sharks Count: \(teamSharks.count - 1)")
+                
                 //set team position to next team
                 teamPosition = 2
             }
-            else if teamPosition == 2 && ((teamDragons.count - 1) <= 5)
+            else if teamPosition == 2
             {
                 //print name and team for each player
                 print("Name: \(tier[number]), Team: Team Dragons")
@@ -221,16 +226,20 @@ func assignPlayersToTeams(tier: [String]){
                 //Append each name to the team's global array
                 teamDragons.append(name)
 
+                print("Team Dragons Count: \(teamDragons.count - 1)")
+                
                 //set team position to next team
                 teamPosition = 3
             }
-            else if teamPosition == 3 && ((teamRaptors.count - 1) <= 5)
+            else if teamPosition == 3
             {
                 //print name and team for each player
                 print("Name: \(tier[number]), Team: Team Raptors")
 
                 //Append each name to the team's global array
                 teamRaptors.append(name)
+
+                print("Team Raptors Count: \(teamRaptors.count - 1)")
                 
                 //set team position back to first team
                 teamPosition = 1
