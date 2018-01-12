@@ -246,7 +246,7 @@ func assignPlayersToTeams(tier: [String]){
                 
                 //Append each name to the team's global array
                 teamDragons.append(name)
-
+                
                 print("Team Dragons Count: \(teamDragons.count - 1)")
                 
                 //set team position to next team
@@ -259,7 +259,7 @@ func assignPlayersToTeams(tier: [String]){
 
                 //Append each name to the team's global array
                 teamRaptors.append(name)
-
+                
                 print("Team Raptors Count: \(teamRaptors.count - 1)")
                 
                 //set team position back to first team
@@ -286,8 +286,111 @@ func assignPlayersToTeams(tier: [String]){
     }
 }
 
-func createLetterForPlayer(){
+func isSharksPlayer(name: String) -> (Bool)
+{
+    let sharksCount = teamSharks.count - 1
+
+    for player in 0...sharksCount{
+        
+        if teamSharks[player] == name{
+            //print("IN getPlayerTeam - Player: \(player)")
+            return true
+        }
+    }
+    return false
+}
+
+func isDragonsPlayer(name: String) -> (Bool)
+{
+    let dragonsCount = teamDragons.count - 1
     
+    for player in 0...dragonsCount{
+        
+        if teamDragons[player] == name{
+            //print("IN getPlayerTeam - Player: \(player)")
+            return true
+        }
+    }
+    return false
+}
+
+func isRaptorsPlayer(name: String) -> (Bool)
+{
+    let raptorsCount = teamRaptors.count - 1
+    
+    for player in 0...raptorsCount{
+        
+        if teamRaptors[player] == name{
+            //print("IN getPlayerTeam - Player: \(player)")
+            return true
+        }
+    }
+    return false
+}
+
+
+func getPlayerTeam(name: String) -> (String){
+    if isSharksPlayer(name: name){
+        return "Team Sharks"
+    }
+    else if isDragonsPlayer(name: name){
+        return "Team Dragons"
+    }
+    else if isRaptorsPlayer(name: name){
+        return "Team Raptors"
+    }
+    return "Default in getPlayerTeam - You Shouldn't Get Here"
+}
+
+func createLetterForPlayer(team: [String]){
+    //print("In createLetterForPlayer - Team: \(team)")
+    
+    let count = team.count - 1
+    
+    for playerNumber in 0...count{
+        
+        //Do I remove this?
+        //let number = players.count - 1
+        
+        let player = players[playerNumber]
+        var teamAssigned = false
+        
+        var playerName = ""
+        
+        print("**************************")
+        print("*** LETTER TO GUARDIAN ***")
+        
+        for (key,value) in player{
+            
+            //print("IN createLetterForPlayer: Player Data: \(player)")
+            
+            if key == "name"{
+            
+                //print("In createLetterForPlayer - Player Name: \(value)")
+                print("**************************")
+                print("Dear \(value),")
+                playerName = value as! String
+            }
+            else if key == "guardian names"{
+                print("Please tell your guardian(s), \(value),")
+            }
+        }
+        
+        if teamAssigned == false{
+            let team = getPlayerTeam(name: playerName)
+            print("that you have been assigned to \(team).")
+            if team == "Team Sharks"{
+                print("Your first practice date is on March 17th at 3pm.")
+            }
+            else if team == "Team Dragons"{
+                print("Your first practice date is on March 17th at 1pm.")
+            }
+            else if team == "Team Raptors"{
+                print("Your first practice date is on March 18th at 1pm.")
+            }
+            teamAssigned = true
+        }
+    }
 }
 
 //*** BASE LOGIC ***
@@ -370,7 +473,8 @@ teamSharks
 teamDragons
 teamRaptors
 
-
-
+createLetterForPlayer(team: teamSharks)
+createLetterForPlayer(team: teamDragons)
+createLetterForPlayer(team: teamRaptors)
 
 
