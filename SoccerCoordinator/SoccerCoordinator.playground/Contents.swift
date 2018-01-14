@@ -84,26 +84,31 @@ func sortPlayersByHeight(player: [String: Any]) -> (String){
     //sort players into rankings by height
     if height >= 46{
         let heightBracket = "tallest"
+        //Storing value in player dictionary.
         player1["heightBracket"] = heightBracket
         return (heightBracket)
     }
     else if height >= 44 && height <= 45{
         let heightBracket = "tall"
+        //Storing value in player dictionary.
         player1["heightBracket"] = heightBracket
         return (heightBracket)
     }
     else if height >= 41 && height <= 43{
         let heightBracket = "medium"
+        //Storing value in player dictionary.
         player1["heightBracket"] = heightBracket
         return (heightBracket)
     }
     else if height >= 38 && height <= 40{
         let heightBracket = "short"
+        //Storing value in player dictionary.
         player1["heightBracket"] = heightBracket
         return (heightBracket)
     }
     else if height <= 37{
         let heightBracket = "shortest"
+        //Storing value in player dictionary.
         player1["heightBracket"] = heightBracket
         return (heightBracket)
     }
@@ -137,6 +142,7 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
     
     print("ASSIGN PLAYER RANKING - HEIGHT: \(height) EXPERIENCE: \(experience)")
 
+    //Store player name from player dictionary
     let playerName = player["name"]
     
     //Sort players into rankings based upon their height and experience.
@@ -147,6 +153,7 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
        
         print("IN assignPlayerRanking - Tier1 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
         
+        //Add playerName to global tier array for later use
         tier1.append(playerName as! String)
         
         //return tier
@@ -156,7 +163,8 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
         playerRanking = "tier 2"
         
         print("IN assignPlayerRanking - Tier2 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
-        
+
+        //Add playerName to global tier array for later use
         tier2.append(playerName as! String)
         
         //return tier
@@ -167,6 +175,7 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
    
         print("IN assignPlayerRanking - Tier3 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
         
+        //Add playerName to global tier array for later use
         tier3.append(playerName as! String)
         
         //return tier
@@ -177,6 +186,7 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
 
         print("IN assignPlayerRanking - Tier4 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
         
+        //Add playerName to global tier array for later use
         tier4.append(playerName as! String)
         
         //return tier
@@ -187,6 +197,7 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
         
         print("IN assignPlayerRanking - Tier5 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
         
+        //Add playerName to global tier array for later use
         tier5.append(playerName as! String)
         
         //return tier
@@ -197,6 +208,7 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
         
         print("IN assignPlayerRanking - Tier6 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
         
+        //Add playerName to global tier array for later use
         tier6.append(playerName as! String)
         
         //return tier
@@ -281,17 +293,19 @@ func assignPlayersToTeams(tier: [String]){
             }
         }
     } else {
-        //If you get here it just means that there are no players in this Tier.  In this example both Tier 1 and 6 are empty.
+        //If you get here it just means that there are no players in this Tier.  In this example both Tier 1 and 6 are empty with default players.
         print("--Empty Tier--")
     }
 }
 
+//Check to see if player is on Sharks Team
 func isSharksPlayer(name: String) -> (Bool)
 {
     let sharksCount = teamSharks.count - 1
 
     for player in 0...sharksCount{
         
+        //If player name appears in teamSharks then return true
         if teamSharks[player] == name{
             //print("IN getPlayerTeam - Player: \(player)")
             return true
@@ -300,12 +314,14 @@ func isSharksPlayer(name: String) -> (Bool)
     return false
 }
 
+//Check to see if player is on Dragons Team
 func isDragonsPlayer(name: String) -> (Bool)
 {
     let dragonsCount = teamDragons.count - 1
     
     for player in 0...dragonsCount{
         
+        //If player name appears in teamDragons then return true
         if teamDragons[player] == name{
             //print("IN getPlayerTeam - Player: \(player)")
             return true
@@ -314,12 +330,14 @@ func isDragonsPlayer(name: String) -> (Bool)
     return false
 }
 
+//Check to see if player is on the Dragons Team
 func isRaptorsPlayer(name: String) -> (Bool)
 {
     let raptorsCount = teamRaptors.count - 1
     
     for player in 0...raptorsCount{
         
+        //If player name appears in teamRaptors then return true
         if teamRaptors[player] == name{
             //print("IN getPlayerTeam - Player: \(player)")
             return true
@@ -328,7 +346,7 @@ func isRaptorsPlayer(name: String) -> (Bool)
     return false
 }
 
-
+//get Team of player by player name
 func getPlayerTeam(name: String) -> (String){
     if isSharksPlayer(name: name){
         return "Team Sharks"
@@ -342,6 +360,7 @@ func getPlayerTeam(name: String) -> (String){
     return "Default in getPlayerTeam - You Shouldn't Get Here"
 }
 
+//Create the letter for the player and their guardians
 func createLetterForPlayer(team: [String]){
     //print("In createLetterForPlayer - Team: \(team)")
     
@@ -349,24 +368,20 @@ func createLetterForPlayer(team: [String]){
     
     for playerNumber in 0...count{
         
-        //Do I remove this?
-        //let number = players.count - 1
-        
         let player = players[playerNumber]
-        var teamAssigned = false
         
+        var teamAssigned = false
         var playerName = ""
         
         print("**************************")
         print("*** LETTER TO GUARDIAN ***")
-        
+
+        //Iterate through each player in players
         for (key,value) in player{
             
-            //print("IN createLetterForPlayer: Player Data: \(player)")
-            
+            //Print first part of letter
             if key == "name"{
             
-                //print("In createLetterForPlayer - Player Name: \(value)")
                 print("**************************")
                 print("Dear \(value),")
                 playerName = value as! String
@@ -376,6 +391,7 @@ func createLetterForPlayer(team: [String]){
             }
         }
         
+        //Print second part of letter.
         if teamAssigned == false{
             let team = getPlayerTeam(name: playerName)
             print("that you have been assigned to \(team).")
@@ -419,18 +435,19 @@ for playerNumber in 0...count{
     
     var heightBracket = "Default"
     
+    //Get HeightBracket for players
     for (key,value) in players[playerNumber]{
         
         if key == "heightBracket"{
             heightBracket = value as! String
             print("Player Height Bracket: \(heightBracket)")
         }
+        
+        //REMEMBER TO UPDATE THE VALUES PASSED IN HERE TOO
+        let playerRanking = assignPlayerRanking(player: players[playerNumber], height: heightBracket, experience: playerExperience.1)
+        print("BASE LOGIC - Ranking: \(playerRanking)")
     }
     print(players[playerNumber])
-    
-    //REMEMBER TO UPDATE THE VALUES PASSED IN HERE TOO
-    let playerRanking = assignPlayerRanking(player: players[playerNumber], height: heightBracket, experience: playerExperience.1)
-    print("BASE LOGIC - Ranking: \(playerRanking)")
     
 }
 
