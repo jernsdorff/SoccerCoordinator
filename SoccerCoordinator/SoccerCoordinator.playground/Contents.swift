@@ -41,6 +41,8 @@ var teamSharks: [String] = []
 var teamDragons: [String] = []
 var teamRaptors: [String] = []
 
+var letters: [String] = []
+
 //Dictionary for each player
 //** REVIEWERS: String: Any was what was suggested by Xcode for assigning multiple value types in a dictionary.
 //If there is something better to use let me know.
@@ -373,8 +375,8 @@ func createLetterForPlayer(team: [String]){
         var teamAssigned = false
         var playerName = ""
         
-        print("**************************")
-        print("*** LETTER TO GUARDIAN ***")
+        letters.append("**************************")
+        letters.append("*** LETTER TO GUARDIAN ***")
 
         //Iterate through each player in players
         for (key,value) in player{
@@ -382,33 +384,41 @@ func createLetterForPlayer(team: [String]){
             //Print first part of letter
             if key == "name"{
             
-                print("**************************")
-                print("Dear \(value),")
+                letters.append("**************************")
+                letters.append("Dear \(value),")
                 playerName = value as! String
             }
             else if key == "guardian names"{
-                print("Please tell your guardian(s), \(value),")
+                letters.append("Please tell your guardian(s), \(value),")
             }
         }
         
         //Print second part of letter.
         if teamAssigned == false{
             let team = getPlayerTeam(name: playerName)
-            print("that you have been assigned to \(team).")
+            letters.append("that you have been assigned to \(team).")
+            
             if team == "Team Sharks"{
-                print("Your first practice date is on March 17th at 3pm.")
+                letters.append("Your first practice date is on March 17th at 3pm.")
             }
             else if team == "Team Dragons"{
-                print("Your first practice date is on March 17th at 1pm.")
+                letters.append("Your first practice date is on March 17th at 1pm.")
             }
             else if team == "Team Raptors"{
-                print("Your first practice date is on March 18th at 1pm.")
+                letters.append("Your first practice date is on March 18th at 1pm.")
             }
             teamAssigned = true
         }
     }
 }
 
+func printLettersToConsole(){
+    let lettersCount = letters.count - 1
+    
+    for lettersNumber in 0...lettersCount{
+        print(letters[lettersNumber])
+    }
+}
 //*** BASE LOGIC ***
 
 //Get count of the number of players in players array -1.
@@ -493,5 +503,10 @@ teamRaptors
 createLetterForPlayer(team: teamSharks)
 createLetterForPlayer(team: teamDragons)
 createLetterForPlayer(team: teamRaptors)
+
+//Calling Letters so it can be viewed in Playgrground.  -->
+letters
+
+printLettersToConsole()
 
 
