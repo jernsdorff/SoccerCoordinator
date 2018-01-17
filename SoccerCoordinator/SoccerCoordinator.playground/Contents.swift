@@ -73,6 +73,7 @@ var joanNewhart: [String: Any] = ["name": "Joan Newhart", "height": 48, "experie
 //Array to hold each player
 var players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeKavalier, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski, bobNewhart, joanNewhart]
 
+/* Taking Out Height Functionality
 //Function to sort players by height.  Passing in the player from players. Returning playerName and height ranking.
 func sortPlayersByHeight(player: [String: Any]) -> (String){
     
@@ -117,7 +118,8 @@ func sortPlayersByHeight(player: [String: Any]) -> (String){
     return ("Error Height")
 
 }
-
+*/
+ 
 //Function to sort players by whether they are experienced or not.  Pass in player.  Return playerName and bool for whether they are experienced.
 func sortPlayersByExperience(player: [String: Any]) -> (String,Bool){
     
@@ -137,19 +139,19 @@ func sortPlayersByExperience(player: [String: Any]) -> (String,Bool){
 }
 
 //Function to assign player an overall ranking based upon their hight and experience.
-func assignPlayerRanking(player: [String: Any], height: String, experience: Bool) -> String{
+func assignPlayerRanking(player: [String: Any], experience: Bool) -> String{
     
     //Intialize a variable to override with each tier name as a String.
     var playerRanking: String = "Not Assigned"
     
-    print("ASSIGN PLAYER RANKING - HEIGHT: \(height) EXPERIENCE: \(experience)")
+    print("ASSIGN PLAYER RANKING - EXPERIENCE: \(experience)")
 
     //Store player name from player dictionary
     let playerName = player["name"]
     
     //Sort players into rankings based upon their height and experience.
     //The taller the player and the more experienced the higher they rank.
-    if height == "tallest" && experience == true{
+    if experience == true{
         //set current tier
         playerRanking = "tier 1"
        
@@ -160,7 +162,7 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
         
         //return tier
         return playerRanking
-    } else if (height == "tall" && experience == true) || (height == "tallest" && experience == false){
+    } else if experience == false{
         //set current tier
         playerRanking = "tier 2"
         
@@ -168,50 +170,6 @@ func assignPlayerRanking(player: [String: Any], height: String, experience: Bool
 
         //Add playerName to global tier array for later use
         tier2.append(playerName as! String)
-        
-        //return tier
-        return playerRanking
-    } else if (height == "medium" && experience == true) || (height == "tall" && experience == false){
-        //set current tier
-        playerRanking = "tier 3"
-   
-        print("IN assignPlayerRanking - Tier3 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
-        
-        //Add playerName to global tier array for later use
-        tier3.append(playerName as! String)
-        
-        //return tier
-        return playerRanking
-    } else if (height == "short" && experience == true) || (height == "medium" && experience == false){
-        //set current tier
-        playerRanking = "tier 4"
-
-        print("IN assignPlayerRanking - Tier4 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
-        
-        //Add playerName to global tier array for later use
-        tier4.append(playerName as! String)
-        
-        //return tier
-        return playerRanking
-    } else if (height == "shortest" && experience == true) || (height == "short" && experience == false){
-        //set current tier
-        playerRanking = "tier 5"
-        
-        print("IN assignPlayerRanking - Tier5 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
-        
-        //Add playerName to global tier array for later use
-        tier5.append(playerName as! String)
-        
-        //return tier
-        return playerRanking
-    } else if height == "shortest" && experience == false{
-        //set current tier
-        playerRanking = "tier 6"
-        
-        print("IN assignPlayerRanking - Tier6 - Player: \(String(describing: playerName)) Tier: \(playerRanking)")
-        
-        //Add playerName to global tier array for later use
-        tier6.append(playerName as! String)
         
         //return tier
         return playerRanking
@@ -427,11 +385,12 @@ let count = players.count - 1
 //Iterate over the players array
 for playerNumber in 0...count{
     
+    /* Taking out player height functionality
     //Rank players by height
     let playerHeight = sortPlayersByHeight(player: players[playerNumber])
     players[playerNumber].updateValue(playerHeight, forKey: "heightBracket")
     print("Player Info: \(players[playerNumber])")
-    
+    */
     
     //print("height: \(players["heightBracket"])")
     
@@ -443,6 +402,7 @@ for playerNumber in 0...count{
     
     //****This is how you reference the code for the invitations****
     
+    /* Taking Out Height Functionality
     var heightBracket = "Default"
     
     //Get HeightBracket for players
@@ -452,11 +412,13 @@ for playerNumber in 0...count{
             heightBracket = value as! String
             print("Player Height Bracket: \(heightBracket)")
         }
-        
-        //REMEMBER TO UPDATE THE VALUES PASSED IN HERE TOO
-        let playerRanking = assignPlayerRanking(player: players[playerNumber], height: heightBracket, experience: playerExperience.1)
-        print("BASE LOGIC - Ranking: \(playerRanking)")
     }
+    */
+    
+    //REMEMBER TO UPDATE THE VALUES PASSED IN HERE TOO
+    let playerRanking = assignPlayerRanking(player: players[playerNumber], experience: playerExperience.1)
+    print("BASE LOGIC - Ranking: \(playerRanking)")
+    
     print(players[playerNumber])
     
 }
@@ -464,10 +426,6 @@ for playerNumber in 0...count{
 //Just calling each tier to view in playground to the right. -->
 tier1
 tier2
-tier3
-tier4
-tier5
-tier6
 
 //Assign Players to Teams for Each Tier Based on Ranking
 print("**************")
@@ -478,22 +436,6 @@ print("**************")
 print("Tier 2 Players")
 print("**************")
 assignPlayersToTeams(tier: tier2)
-print("**************")
-print("Tier 3 Players")
-print("**************")
-assignPlayersToTeams(tier: tier3)
-print("**************")
-print("Tier 4 Players")
-print("**************")
-assignPlayersToTeams(tier: tier4)
-print("**************")
-print("Tier 5 Players")
-print("**************")
-assignPlayersToTeams(tier: tier5)
-print("**************")
-print("Tier 6 Players")
-print("**************")
-assignPlayersToTeams(tier: tier6)
 
 //Calling each team to be viewed in the playground to the right.  -->
 teamSharks
