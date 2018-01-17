@@ -299,7 +299,7 @@ func getGuardianName(playerName: String) -> String{
             //If key == playerName passed in then save dictionary name
             if key == "name" && value as! String == playerName{
                 dict = players[playerNumber]
-                "Assigning Dictionary - dict: \(dict)"
+                print("Assigning Dictionary - dict: \(dict)")
             }
         }
         
