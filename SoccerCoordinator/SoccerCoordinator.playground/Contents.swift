@@ -362,7 +362,6 @@ func createLetterForPlayer(team: [String]){
                 letters.append("that you have been assigned to Team Raptors.")
             }
             
-            /*  Need to add this back in later.
             if team == teamSharks{
                 letters.append("Your first practice date is on March 17th at 3pm.")
             }
@@ -372,7 +371,7 @@ func createLetterForPlayer(team: [String]){
             else if team == teamRaptors{
                 letters.append("Your first practice date is on March 18th at 1pm.")
             }
-            */
+
             teamAssigned = true
         }
     }
