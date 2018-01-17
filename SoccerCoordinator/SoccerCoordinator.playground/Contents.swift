@@ -65,13 +65,15 @@ var phillipHelm: [String: Any] = ["name": "Phillip Helm", "height": 44, "experie
 var lesClay: [String: Any] = ["name": "Les Clay", "height": 42, "experienced": true, "guardian names": "Wynonna Brown"]
 var herschelKrustofski: [String: Any] = ["name": "Herschel Krustofski", "height": 45, "experienced": true, "guardian names": "Hyman and Rachel Krustofski"]
 
+/*  COMMENTING THIS OUT BUT YOU CAN UNCOMMENT TO TEST EXTENSABILITY.  JUST ADD THESE TWO DICTIONARIES TO THE
+    PLAYERS ARRAY.
 //Added a couple other players to show that my code is expandable
 var bobNewhart: [String: Any] = ["name": "Bob Newhart", "height": 35, "experienced": false, "guardian names": "John and Nancy Newhart"]
 var joanNewhart: [String: Any] = ["name": "Joan Newhart", "height": 48, "experienced": true, "guardian names": "John and Nancy Newhart"]
-
+*/
 
 //Array to hold each player
-var players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeKavalier, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski, bobNewhart, joanNewhart]
+var players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeKavalier, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski]
 
 /* Taking Out Height Functionality
 //Function to sort players by height.  Passing in the player from players. Returning playerName and height ranking.
@@ -328,28 +330,23 @@ func createLetterForPlayer(team: [String]){
     
     for playerNumber in 0...count{
         
-        let player = players[playerNumber]
+        //let player = players[playerNumber]
         
         var teamAssigned = false
-        var playerName = ""
+        let playerName = ""
         
         letters.append("**************************")
         letters.append("*** LETTER TO GUARDIAN ***")
+        letters.append("**************************")
+        letters.append("Dear \(team[playerNumber]),")
+        //playerName = value as! String
 
-        //Iterate through each player in players
-        for (key,value) in player{
-            
-            //Print first part of letter
-            if key == "name"{
-            
-                letters.append("**************************")
-                letters.append("Dear \(value),")
-                playerName = value as! String
-            }
+        /*  Need to add this back in later.
             else if key == "guardian names"{
                 letters.append("Please tell your guardian(s), \(value),")
             }
         }
+        */
         
         //Print second part of letter.
         if teamAssigned == false{
