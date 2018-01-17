@@ -74,53 +74,6 @@ var joanNewhart: [String: Any] = ["name": "Joan Newhart", "height": 48, "experie
 
 //Array to hold each player
 var players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeKavalier, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski]
-
-/* Taking Out Height Functionality
-//Function to sort players by height.  Passing in the player from players. Returning playerName and height ranking.
-func sortPlayersByHeight(player: [String: Any]) -> (String){
-    
-    print("sortPlayersByHeight - Player: \(player)")
-    
-    //assigning player height to constant as Int.  Have to convert otherwise it gives a type mismatch.
-    let height = player["height"] as! Int
-    
-    var player1 = player
-    
-    //sort players into rankings by height
-    if height >= 46{
-        let heightBracket = "tallest"
-        //Storing value in player dictionary.
-        player1["heightBracket"] = heightBracket
-        return (heightBracket)
-    }
-    else if height >= 44 && height <= 45{
-        let heightBracket = "tall"
-        //Storing value in player dictionary.
-        player1["heightBracket"] = heightBracket
-        return (heightBracket)
-    }
-    else if height >= 41 && height <= 43{
-        let heightBracket = "medium"
-        //Storing value in player dictionary.
-        player1["heightBracket"] = heightBracket
-        return (heightBracket)
-    }
-    else if height >= 38 && height <= 40{
-        let heightBracket = "short"
-        //Storing value in player dictionary.
-        player1["heightBracket"] = heightBracket
-        return (heightBracket)
-    }
-    else if height <= 37{
-        let heightBracket = "shortest"
-        //Storing value in player dictionary.
-        player1["heightBracket"] = heightBracket
-        return (heightBracket)
-    }
-    return ("Error Height")
-
-}
-*/
  
 //Function to sort players by whether they are experienced or not.  Pass in player.  Return playerName and bool for whether they are experienced.
 func sortPlayersByExperience(player: [String: Any]) -> (String,Bool){
@@ -322,6 +275,59 @@ func getPlayerTeam(name: String) -> (String){
     return "Default in getPlayerTeam - You Shouldn't Get Here"
 }
 
+//NOTE:  I haven't passed the player dictionary along so this is my solution for finding the guardian names based off
+//off the name key in the players dictionaries.  If you can think of a cleaner way to do this let me know.  This runs
+//really slow in the playground when all the print statements are enabled so I don't know if this is a very
+//well optimized method but I know in the long run I won't be using playgrounds anyway.
+
+//Get names of guardians based off of the player name
+func getGuardianName(playerName: String) -> String{
+    
+    //Get count of the number of players in players array -1.
+    let playersCount = players.count - 1
+    
+    var dict: [String:Any] = [:]
+    
+    //Iterate over the players array
+    for playerNumber in 0...playersCount{
+        
+        //for player in players iterate over key and value
+        for (key,value) in players[playerNumber]{
+            
+            //print("In getGuardianName() - Iterating over Players Array - player: \(players[playerNumber]) Key: \(key) Value: \(value)")
+
+            //If key == playerName passed in then save dictionary name
+            if key == "name" && value as! String == playerName{
+                dict = players[playerNumber]
+                "Assigning Dictionary - dict: \(dict)"
+            }
+        }
+        
+        //If Dictionary is empty then do nothing and return default values below
+        if dict.isEmpty{
+            print("In getGuardianName() - dict is Empty")
+        }
+        else
+        {
+            //Else if Dictionary not empty:
+            
+            //Iterate over key value pairs in saved dictionary
+            for (key,value) in dict{
+                
+                //print("In getGuardianName() - Iterating over Guardians Array - dict: \(dict) Key: \(key) Value: \(value)")
+                
+                //If key matches "guardian names" then return value as! String
+                if key == "guardian names"{
+                    
+                    print("In getGuardianName() - Found Guardian Name - Returning: \(value)")
+                    return value as! String
+                }
+            }
+        }
+    }
+    return "DEFAULT GUARDIAN - YOU SHOULDN'T GET HERE."
+}
+
 //Create the letter for the player and their guardians
 func createLetterForPlayer(team: [String]){
     //print("In createLetterForPlayer - Team: \(team)")
@@ -341,13 +347,9 @@ func createLetterForPlayer(team: [String]){
         letters.append("Dear \(team[playerNumber]),")
         //playerName = value as! String
 
-        /*  Need to add this back in later.
-            else if key == "guardian names"{
-                letters.append("Please tell your guardian(s), \(value),")
-            }
-        }
-        */
-        
+        let guardianName = getGuardianName(playerName: team[playerNumber])
+        letters.append("Please tell your guardian(s), \(guardianName),")
+
         //Print second part of letter.
         if teamAssigned == false{
             //let team = getPlayerTeam(name: playerName)
@@ -392,35 +394,9 @@ let count = players.count - 1
 //Iterate over the players array
 for playerNumber in 0...count{
     
-    /* Taking out player height functionality
-    //Rank players by height
-    let playerHeight = sortPlayersByHeight(player: players[playerNumber])
-    players[playerNumber].updateValue(playerHeight, forKey: "heightBracket")
-    print("Player Info: \(players[playerNumber])")
-    */
-    
-    //print("height: \(players["heightBracket"])")
-    
     //Rank players by experience
     let playerExperience = sortPlayersByExperience(player: players[playerNumber])
     print("experience: \(playerExperience)")
-    
-    //Rank players by height and experience
-    
-    //****This is how you reference the code for the invitations****
-    
-    /* Taking Out Height Functionality
-    var heightBracket = "Default"
-    
-    //Get HeightBracket for players
-    for (key,value) in players[playerNumber]{
-        
-        if key == "heightBracket"{
-            heightBracket = value as! String
-            print("Player Height Bracket: \(heightBracket)")
-        }
-    }
-    */
     
     //REMEMBER TO UPDATE THE VALUES PASSED IN HERE TOO
     let playerRanking = assignPlayerRanking(player: players[playerNumber], experience: playerExperience.1)
