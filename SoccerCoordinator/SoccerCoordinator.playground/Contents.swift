@@ -71,7 +71,7 @@ var joanNewhart: [String: Any] = ["name": "Joan Newhart", "height": 48, "experie
 
 
 //Array to hold each player
-var players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeSmith, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski, bobNewhart, joanNewhart]
+var players = [joeSmith, jillTanner, billBon, evaGordon, mattGill, kimmyStein, sammyAdams, karlSaygan, suzaneGreenberg, salDali, joeKavalier, benFinkelstein, diegoSoto, chloeAlaska, arnoldWillis, phillipHelm, lesClay, herschelKrustofski, bobNewhart, joanNewhart]
 
 //Function to sort players by height.  Passing in the player from players. Returning playerName and height ranking.
 func sortPlayersByHeight(player: [String: Any]) -> (String){
