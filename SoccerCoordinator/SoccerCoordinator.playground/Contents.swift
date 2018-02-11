@@ -26,10 +26,8 @@
 //Global Variables for Each Rank
 var tier1: [String] = []
 var tier2: [String] = []
-var tier3: [String] = []
-var tier4: [String] = []
-var tier5: [String] = []
-var tier6: [String] = []
+
+var test: String = "Empty String"
 
 //variable iterate over for each team in the assignPlayersToTeams function.
 //Once someone is assigned to one team it moves the next team.  Once it gets
