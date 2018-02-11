@@ -43,6 +43,8 @@ var teamRaptors: [String] = []
 
 var letters: [String] = []
 
+//ADDING A TEST COMMENT TO MASTER
+
 //Dictionary for each player
 //** REVIEWERS: String: Any was what was suggested by Xcode for assigning multiple value types in a dictionary.
 //If there is something better to use let me know.
