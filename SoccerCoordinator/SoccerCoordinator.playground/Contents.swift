@@ -44,7 +44,7 @@ var teamRaptors: [String] = []
 var letters: [String] = []
 
 //ADDING A TEST VAR TO MASTER TO PRACTICE MERGING
-let var2 = Test
+let constant1: String = "Test"
 
 //Dictionary for each player
 //** REVIEWERS: String: Any was what was suggested by Xcode for assigning multiple value types in a dictionary.
